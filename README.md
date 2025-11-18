@@ -210,9 +210,6 @@ Uma aplicação Next.js 14 completa e expandida para construir, analisar e explo
 **PokeAPI Endpoints Usados:**
 - `GET /location-area/{id}` - Encontros e taxas
 
-**Limitações Documentadas:**
-- **Shiny Rate:** PokeAPI não fornece taxa de shiny. Valor padrão configurável: 1/4096 (Gen 6+).
-- **Documentação:** Rate é configurável no código e claramente documentado no README e UI.
 
 ## 🚀 Tecnologias
 
@@ -221,10 +218,10 @@ Uma aplicação Next.js 14 completa e expandida para construir, analisar e explo
 - **Tailwind CSS** - Estilização utility-first
 - **Shadcn/ui** - Componentes de UI reutilizáveis
 - **Framer Motion** - Animações fluidas
-- **Recharts** - Gráficos interativos (novo!)
+- **Recharts** - Gráficos interativos 
 - **Zustand** - Gerenciamento de estado
 - **TanStack Query** - Cache, prefetch e fetch de dados
-- **Vitest** - Framework de testes (novo!)
+- **Vitest** - Framework de testes
 - **PokeAPI** - Dados completos dos Pokémon
 
 ## 📦 Instalação
@@ -281,11 +278,6 @@ Cobertura de testes implementada com Vitest:
    - Team balance calculation
    - Suggestion generation
 
-Para rodar os testes:
-```bash
-npm run test        # Modo watch
-npm run test:ui     # Interface gráfica
-```
 
 ## 🎯 Rotas Completas
 
@@ -463,13 +455,6 @@ Breakpoints Tailwind:
 - [ ] Testes de palette extraction passam
 - [ ] Testes de team suggest passam
 
-### Cross-browser
-- [ ] Chrome
-- [ ] Firefox
-- [ ] Safari
-- [ ] Edge
-- [ ] Mobile Safari
-- [ ] Mobile Chrome
 
 ## 🚀 Deploy
 
@@ -483,37 +468,6 @@ vercel --prod
 npm run build
 npm start
 ```
-
-### Variáveis de Ambiente
-Nenhuma configuração necessária - usa PokeAPI pública sem autenticação.
-
-## 📝 Commits Estruturados
-
-Este projeto segue a convenção de commits semânticos:
-
-```
-chore: add moves & abilities modules
-feat: encounters explorer + habitat
-feat: breeding planner + evolution visualizer
-feat: team analysis + auto-suggest
-test: add comprehensive test suite
-docs: update README with new features
-```
-
-## 🔮 Funcionalidades Futuras
-
-Possíveis expansões:
-- [ ] Comparação entre múltiplos times salvos
-- [ ] Modo competitivo com tiers (OU, UU, etc)
-- [ ] Compartilhamento de times via URL
-- [ ] Importação de times do Showdown
-- [ ] Calculadora de dano
-- [ ] Simulador de batalhas simplificado
-- [ ] Integration com Smogon data
-- [ ] IV/EV calculator
-- [ ] Nature recommendations
-- [ ] Move effectiveness calculator
-
 ## 📝 Licença
 
 Este projeto é open source e está disponível sob a licença MIT.
