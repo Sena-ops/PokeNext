@@ -78,7 +78,7 @@ const toolsFeatures = [
     icon: GitBranch,
     title: "Evolution Chains",
     description: "Visualize cadeias evolutivas completas",
-    href: "/evolution/1"
+    href: "/evolution"
   },
   {
     icon: Zap,
