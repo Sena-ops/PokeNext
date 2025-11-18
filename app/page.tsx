@@ -2,29 +2,95 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Sparkles, Zap, BarChart3, Shield } from "lucide-react";
+import { 
+  Sparkles, 
+  Zap, 
+  BarChart3, 
+  Shield, 
+  BookOpen, 
+  Heart, 
+  MapPin, 
+  GitBranch,
+  Image,
+  Scroll,
+  Users,
+  Target
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
-const features = [
+const mainFeatures = [
   {
     icon: Sparkles,
-    title: "Team Builder Intuitivo",
+    title: "Team Builder",
     description: "Monte seu time dos sonhos com drag-and-drop e busca inteligente",
+    href: "/team-builder"
   },
   {
     icon: BarChart3,
-    title: "Análise Profunda",
+    title: "Team Analysis",
     description: "Gráficos detalhados de stats, tipos e cobertura do seu time",
+    href: "/team-analysis"
   },
   {
-    icon: Shield,
-    title: "Análise de Sinergia",
-    description: "Descubra fraquezas e receba sugestões para melhorar seu time",
+    icon: Target,
+    title: "Auto Suggest",
+    description: "IA sugere Pokémon ideais baseado no seu time atual",
+    href: "/team/suggest"
+  },
+];
+
+const encyclopediaFeatures = [
+  {
+    icon: BookOpen,
+    title: "Move Encyclopedia",
+    description: "Explore todos os movimentos com filtros e detalhes completos",
+    href: "/moves"
+  },
+  {
+    icon: Sparkles,
+    title: "Ability Atlas",
+    description: "Catálogo de habilidades com efeitos e Pokémon que as possuem",
+    href: "/abilities"
+  },
+  {
+    icon: Scroll,
+    title: "Flavor & Lore",
+    description: "Pokédex entries e história de cada Pokémon",
+    href: "/flavor"
+  },
+];
+
+const toolsFeatures = [
+  {
+    icon: Heart,
+    title: "Breeding Planner",
+    description: "Planeje criações com compatibilidade e egg moves",
+    href: "/breeding"
+  },
+  {
+    icon: MapPin,
+    title: "Encounter Explorer",
+    description: "Descubra onde encontrar cada Pokémon",
+    href: "/explorer/encounters"
+  },
+  {
+    icon: GitBranch,
+    title: "Evolution Chains",
+    description: "Visualize cadeias evolutivas completas",
+    href: "/evolution/1"
   },
   {
     icon: Zap,
-    title: "Tempo Real",
-    description: "Dados atualizados da PokeAPI com cache inteligente",
+    title: "Encounter Simulator",
+    description: "Simule encontros e veja probabilidades",
+    href: "/encounter-sim"
+  },
+  {
+    icon: Image,
+    title: "Sprite Gallery",
+    description: "Baixe sprites e artwork oficial",
+    href: "/gallery"
   },
 ];
 
@@ -102,7 +168,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Features Section */}
+      {/* Main Features Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div
@@ -113,28 +179,114 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Recursos Poderosos
+              Recursos Principais
             </h2>
             <p className="text-xl text-muted-foreground">
-              Tudo que você precisa para construir o time perfeito
+              Construa e analise seu time perfeito
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="glass rounded-xl p-6 hover:shadow-2xl transition-all"
-              >
-                <feature.icon className="w-12 h-12 text-pokemon-red mb-4" />
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </motion.div>
+          <div className="grid md:grid-cols-3 gap-6 mb-20">
+            {mainFeatures.map((feature, index) => (
+              <Link key={feature.title} href={feature.href}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                >
+                  <Card className="h-full cursor-pointer hover:shadow-xl transition-all border-2 hover:border-pokemon-red">
+                    <CardHeader>
+                      <feature.icon className="w-12 h-12 text-pokemon-red mb-4" />
+                      <CardTitle className="text-2xl">{feature.title}</CardTitle>
+                      <CardDescription className="text-base">
+                        {feature.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Encyclopedia Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h3 className="text-3xl font-bold mb-2 flex items-center gap-3">
+              <BookOpen className="w-8 h-8 text-blue-600" />
+              Enciclopédia
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              Explore dados completos de moves, abilities e lore
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-20">
+            {encyclopediaFeatures.map((feature, index) => (
+              <Link key={feature.title} href={feature.href}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                >
+                  <Card className="h-full cursor-pointer hover:shadow-xl transition-all hover:border-blue-500">
+                    <CardHeader>
+                      <feature.icon className="w-10 h-10 text-blue-600 mb-3" />
+                      <CardTitle>{feature.title}</CardTitle>
+                      <CardDescription>{feature.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Tools Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h3 className="text-3xl font-bold mb-2 flex items-center gap-3">
+              <Zap className="w-8 h-8 text-yellow-600" />
+              Ferramentas Avançadas
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              Simuladores, planejadores e exploradores
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {toolsFeatures.map((feature, index) => (
+              <Link key={feature.title} href={feature.href}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                >
+                  <Card className="h-full cursor-pointer hover:shadow-xl transition-all hover:border-yellow-500">
+                    <CardHeader className="p-4">
+                      <feature.icon className="w-8 h-8 text-yellow-600 mb-2" />
+                      <CardTitle className="text-base">{feature.title}</CardTitle>
+                      <CardDescription className="text-sm">
+                        {feature.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
