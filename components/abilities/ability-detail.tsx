@@ -38,17 +38,17 @@ export function AbilityDetail({ ability }: AbilityDetailProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="space-y-6"
+      className=&quot;space-y-6&quot;
     >
       {/* Header Card */}
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <Sparkles className="w-8 h-8 text-purple-500" />
+          <div className=&quot;flex items-center justify-between mb-4&quot;>
+            <div className=&quot;flex items-center gap-3&quot;>
+              <Sparkles className=&quot;w-8 h-8 text-purple-500&quot; />
               <div>
                 {ability.generation && (
-                  <Badge variant="secondary" className="mb-2">
+                  <Badge variant=&quot;secondary&quot; className=&quot;mb-2&quot;>
                     {ability.generation.name.replace('generation-', 'Generation ').toUpperCase()}
                   </Badge>
                 )}
@@ -59,12 +59,12 @@ export function AbilityDetail({ ability }: AbilityDetailProps) {
             )}
           </div>
           
-          <CardTitle className="text-3xl capitalize">
+          <CardTitle className=&quot;text-3xl capitalize&quot;>
             {displayName}
           </CardTitle>
           
           {shortEffect && (
-            <CardDescription className="text-base mt-2">
+            <CardDescription className=&quot;text-base mt-2&quot;>
               {shortEffect}
             </CardDescription>
           )}
@@ -74,13 +74,13 @@ export function AbilityDetail({ ability }: AbilityDetailProps) {
       {/* Effect Card */}
       <Card>
         <CardHeader>
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-5 h-5" />
-            <CardTitle className="text-xl">Effect</CardTitle>
+          <div className=&quot;flex items-center gap-2&quot;>
+            <BookOpen className=&quot;w-5 h-5&quot; />
+            <CardTitle className=&quot;text-xl&quot;>Effect</CardTitle>
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+          <p className=&quot;text-sm leading-relaxed text-gray-700 dark:text-gray-300&quot;>
             {effectText}
           </p>
         </CardContent>
@@ -90,14 +90,14 @@ export function AbilityDetail({ ability }: AbilityDetailProps) {
       {flavorText && (
         <Card>
           <CardHeader>
-            <div className="flex items-center gap-2">
-              <Info className="w-5 h-5" />
-              <CardTitle className="text-xl">Description</CardTitle>
+            <div className=&quot;flex items-center gap-2&quot;>
+              <Info className=&quot;w-5 h-5&quot; />
+              <CardTitle className=&quot;text-xl&quot;>Description</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-sm italic text-gray-600 dark:text-gray-400">
-              "{flavorText}"
+            <p className=&quot;text-sm italic text-gray-600 dark:text-gray-400&quot;>
+              &quot;{flavorText}&quot;
             </p>
           </CardContent>
         </Card>
@@ -106,29 +106,29 @@ export function AbilityDetail({ ability }: AbilityDetailProps) {
       {/* Regular Pokemon */}
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Eye className="w-5 h-5" />
-              <CardTitle className="text-xl">Regular Ability</CardTitle>
+          <div className=&quot;flex items-center justify-between&quot;>
+            <div className=&quot;flex items-center gap-2&quot;>
+              <Eye className=&quot;w-5 h-5&quot; />
+              <CardTitle className=&quot;text-xl&quot;>Regular Ability</CardTitle>
             </div>
-            <Badge variant="secondary">
+            <Badge variant=&quot;secondary&quot;>
               {regularPokemon.length} Pokémon
             </Badge>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-wrap gap-2">
+          <div className=&quot;flex flex-wrap gap-2&quot;>
             {regularPokemon.slice(0, 50).map((p) => (
               <Badge
                 key={p.pokemon.name}
-                variant="outline"
-                className="capitalize"
+                variant=&quot;outline&quot;
+                className=&quot;capitalize&quot;
               >
                 {p.pokemon.name.replace(/-/g, ' ')}
               </Badge>
             ))}
             {regularPokemon.length > 50 && (
-              <Badge variant="secondary">
+              <Badge variant=&quot;secondary&quot;>
                 +{regularPokemon.length - 50} more
               </Badge>
             )}
@@ -140,29 +140,29 @@ export function AbilityDetail({ ability }: AbilityDetailProps) {
       {hiddenPokemon.length > 0 && (
         <Card>
           <CardHeader>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <EyeOff className="w-5 h-5 text-purple-500" />
-                <CardTitle className="text-xl">Hidden Ability</CardTitle>
+            <div className=&quot;flex items-center justify-between&quot;>
+              <div className=&quot;flex items-center gap-2&quot;>
+                <EyeOff className=&quot;w-5 h-5 text-purple-500&quot; />
+                <CardTitle className=&quot;text-xl&quot;>Hidden Ability</CardTitle>
               </div>
-              <Badge variant="secondary" className="bg-purple-100 dark:bg-purple-900">
+              <Badge variant=&quot;secondary&quot; className=&quot;bg-purple-100 dark:bg-purple-900&quot;>
                 {hiddenPokemon.length} Pokémon
               </Badge>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-2">
+            <div className=&quot;flex flex-wrap gap-2&quot;>
               {hiddenPokemon.slice(0, 50).map((p) => (
                 <Badge
                   key={p.pokemon.name}
-                  variant="outline"
-                  className="capitalize border-purple-300 text-purple-700 dark:border-purple-700 dark:text-purple-300"
+                  variant=&quot;outline&quot;
+                  className=&quot;capitalize border-purple-300 text-purple-700 dark:border-purple-700 dark:text-purple-300&quot;
                 >
                   {p.pokemon.name.replace(/-/g, ' ')}
                 </Badge>
               ))}
               {hiddenPokemon.length > 50 && (
-                <Badge variant="secondary">
+                <Badge variant=&quot;secondary&quot;>
                   +{hiddenPokemon.length - 50} more
                 </Badge>
               )}

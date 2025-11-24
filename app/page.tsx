@@ -2,41 +2,63 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { 
-  Sparkles, 
-  Zap, 
-  BarChart3, 
-  Shield, 
-  BookOpen, 
-  Heart, 
-  MapPin, 
+import {
+  Sparkles,
+  Zap,
+  BarChart3,
+  Shield,
+  BookOpen,
+  Heart,
+  MapPin,
   GitBranch,
   Image,
   Scroll,
   Users,
-  Target
+  Target,
+  Trophy,
+  Swords,
+  Cloud,
+  Layout
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 const mainFeatures = [
   {
+    icon: Layout,
+    title: "Dashboard",
+    description: "Painel central com todas as suas estatísticas e progresso",
+    href: "/dashboard"
+  },
+  {
     icon: Sparkles,
-    title: "Team Builder",
-    description: "Monte seu time dos sonhos com drag-and-drop e busca inteligente",
-    href: "/team-builder"
+    title: "AI Strategy Coach",
+    description: "Professor Oak analisa seu time e dá sugestões estratégicas",
+    href: "/ai-coach"
   },
   {
-    icon: BarChart3,
-    title: "Team Analysis",
-    description: "Gráficos detalhados de stats, tipos e cobertura do seu time",
-    href: "/team-analysis"
+    icon: Swords,
+    title: "Battle Simulator",
+    description: "Simule batalhas Pokémon completas com cálculo de dano real",
+    href: "/battle-sim"
   },
   {
-    icon: Target,
-    title: "Auto Suggest",
-    description: "IA sugere Pokémon ideais baseado no seu time atual",
-    href: "/team/suggest"
+    icon: Users,
+    title: "Social Hub",
+    description: "Compartilhe times e descubra estratégias da comunidade",
+    href: "/social-hub"
+  },
+  {
+    icon: Trophy,
+    title: "Conquistas",
+    description: "Desbloqueie achievements, ganhe XP e suba de nível",
+    href: "/achievements"
+  },
+  {
+    icon: Cloud,
+    title: "Weather Events",
+    description: "Pokémon e bônus baseados no clima real da sua região",
+    href: "/weather-events"
   },
 ];
 
@@ -186,7 +208,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
             {mainFeatures.map((feature, index) => (
               <Link key={feature.title} href={feature.href}>
                 <motion.div

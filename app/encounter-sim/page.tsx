@@ -117,7 +117,7 @@ export default function EncounterSimPage() {
                 <li>• Calculates shiny encounter chances (default: 1/4096)</li>
               </ul>
               <p className="text-xs text-yellow-700 dark:text-yellow-300 mt-3">
-                <strong>Note:</strong> Shiny rates are configurable defaults as PokeAPI doesn't provide them.
+                <strong>Note:</strong> Shiny rates are configurable defaults as PokeAPI doesn&apos;t provide them.
               </p>
             </CardContent>
           </Card>
