@@ -16,7 +16,7 @@ import Link from 'next/link';
 export default function TeamSuggestPage() {
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
-  const { team, addPokemon } = useTeamStore();
+  const { currentTeam, addPokemon } = useTeamStore();
   
   // Fetch a pool of Pokemon to suggest from (Gen 1-3 for performance)
   const { data: pokemonList, isLoading: isLoadingList } = useQuery({
@@ -38,16 +38,16 @@ export default function TeamSuggestPage() {
     staleTime: 1000 * 60 * 60
   });
   
-  const currentTeam = team.filter((p): p is Pokemon => p !== null);
+  const team = currentTeam.filter(p => p !== null);
   
   const generateSuggestions = () => {
     if (!pokemonPool) return;
-    
+
     setIsGenerating(true);
     setTimeout(() => {
       const newSuggestions = generateTeamSuggestions(
         pokemonPool,
-        currentTeam,
+        team as any,
         6
       );
       setSuggestions(newSuggestions);
@@ -62,14 +62,14 @@ export default function TeamSuggestPage() {
   }, [pokemonPool]);
   
   const handleAddToTeam = (pokemon: Pokemon) => {
-    const emptySlot = team.findIndex(p => p === null);
+    const emptySlot = currentTeam.findIndex(p => p === null);
     if (emptySlot !== -1) {
-      addPokemon(pokemon, emptySlot);
+      addPokemon({ ...pokemon, position: emptySlot }, emptySlot);
     }
   };
   
   const isLoading = isLoadingList || isLoadingPool;
-  const hasEmptySlots = team.some(p => p === null);
+  const hasEmptySlots = currentTeam.some(p => p === null);
   
   return (
     <div className="container mx-auto px-4 py-8">
@@ -106,10 +106,10 @@ export default function TeamSuggestPage() {
           AI-powered Pokémon suggestions based on type coverage, roles, and team balance.
         </p>
         
-        {currentTeam.length > 0 && (
+        {team.length > 0 && (
           <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <p className="text-sm text-blue-900 dark:text-blue-200">
-              <strong>Current Team:</strong> {currentTeam.map(p => p.name).join(', ')}
+              <strong>Current Team:</strong> {team.map(p => p.name).join(', ')}
             </p>
             <p className="text-xs text-blue-700 dark:text-blue-300 mt-1">
               Suggestions will complement your existing team members.

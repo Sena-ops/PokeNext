@@ -3,12 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { RootLayoutClient } from "./layout-client";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PokéTeam Synergy Analyzer - Construa o Time Perfeito",
+  title: "PokéTeam Trainer - Construa o Time Perfeito",
   description: "Analise e construa times de Pokémon com sinergia perfeita. Descubra fraquezas, pontos fortes e otimize sua estratégia.",
   keywords: "pokemon, team builder, synergy, analyzer, pokedex",
 };
@@ -28,8 +28,9 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <Providers>
-            <ThemeToggle />
-            {children}
+            <RootLayoutClient>
+              {children}
+            </RootLayoutClient>
           </Providers>
         </ThemeProvider>
       </body>
