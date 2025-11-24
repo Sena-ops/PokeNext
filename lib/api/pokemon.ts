@@ -41,6 +41,7 @@ export async function getPokemon(nameOrId: string | number): Promise<Pokemon> {
 
 export async function searchPokemon(query: string): Promise<Pokemon[]> {
   if (!query || query.length < 2) return [];
+  console.log(`Searching for: ${query}`);
 
   const normalizedQuery = query.toLowerCase().trim();
 
@@ -51,7 +52,7 @@ export async function searchPokemon(query: string): Promise<Pokemon[]> {
   } catch {
     // Se falhar, usa a lista cacheada para busca eficiente
     if (!cachedPokemonList) {
-      cachedPokemonList = await getPokemonList(1000);
+      cachedPokemonList = await getPokemonList(2000);
     }
 
     // Filtra apenas os nomes, sem fazer fetch completo ainda
@@ -71,13 +72,13 @@ export async function getTypeEffectiveness() {
     'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug',
     'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
   ];
-  
+
   const effectiveness: any = {};
-  
+
   for (const type of types) {
     const response = await fetch(`${BASE_URL}/type/${type}`);
     const data = await response.json();
-    
+
     effectiveness[type] = {
       double_damage_to: data.damage_relations.double_damage_to.map((t: any) => t.name),
       double_damage_from: data.damage_relations.double_damage_from.map((t: any) => t.name),
@@ -87,7 +88,7 @@ export async function getTypeEffectiveness() {
       no_damage_from: data.damage_relations.no_damage_from.map((t: any) => t.name),
     };
   }
-  
+
   return effectiveness;
 }
 
