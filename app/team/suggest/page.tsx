@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getPokemonList, getPokemon } from '@/lib/api/pokemon';
-import { Pokemon } from '@/types/pokemon';
+import { Pokemon, TeamPokemon } from '@/types/pokemon';
 import { generateTeamSuggestions } from '@/lib/utils/team-suggest';
 import { SuggestionCard } from '@/components/team/suggestion-card';
 import { Button } from '@/components/ui/button';
@@ -16,7 +16,7 @@ import Link from 'next/link';
 export default function TeamSuggestPage() {
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
-  const { team, addPokemon } = useTeamStore();
+  const { currentTeam: team, addPokemon } = useTeamStore();
   
   // Fetch a pool of Pokemon to suggest from (Gen 1-3 for performance)
   const { data: pokemonList, isLoading: isLoadingList } = useQuery({
@@ -38,7 +38,7 @@ export default function TeamSuggestPage() {
     staleTime: 1000 * 60 * 60
   });
   
-  const currentTeam = team.filter((p): p is Pokemon => p !== null);
+  const currentTeam = team.filter((p): p is TeamPokemon => p !== null);
   
   const generateSuggestions = () => {
     if (!pokemonPool) return;
@@ -64,7 +64,7 @@ export default function TeamSuggestPage() {
   const handleAddToTeam = (pokemon: Pokemon) => {
     const emptySlot = team.findIndex(p => p === null);
     if (emptySlot !== -1) {
-      addPokemon(pokemon, emptySlot);
+      addPokemon({ ...pokemon, position: emptySlot }, emptySlot);
     }
   };
   
@@ -155,7 +155,7 @@ export default function TeamSuggestPage() {
         <h3 className="font-semibold mb-2">How it works</h3>
         <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
           <li>• <strong>Role Analysis:</strong> Identifies sweepers, tanks, walls, and balanced Pokémon</li>
-          <li>• <strong>Type Coverage:</strong> Suggests Pokémon that fill gaps in your team's type coverage</li>
+          <li>• <strong>Type Coverage:</strong> Suggests Pokémon that fill gaps in your team&apos;s type coverage</li>
           <li>• <strong>Stat Balance:</strong> Considers overall stat distribution and team composition</li>
           <li>• <strong>Rarity Bonus:</strong> Higher-stat Pokémon (like legendaries) get bonus points</li>
         </ul>

@@ -13,7 +13,7 @@ interface SpriteGalleryProps {
 }
 
 interface SpriteItem {
-  url: string | null;
+  url: string | null | undefined;
   label: string;
   category: string;
 }

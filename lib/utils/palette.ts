@@ -15,7 +15,7 @@ export function getPokemonPalette(pokemon: Pokemon): string[] {
   const colors = types.map(type => TYPE_COLORS[type].bg);
   
   // Return unique colors
-  return [...new Set(colors)];
+  return Array.from(new Set(colors));
 }
 
 /**

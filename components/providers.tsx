@@ -16,7 +16,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             refetchOnReconnect: false,
             retry: 1,
             // Otimização: evita tela branca durante refetch
-            placeholderData: (previousData) => previousData,
+            placeholderData: (previousData: unknown) => previousData,
           },
         },
       })

@@ -3,12 +3,18 @@ export interface Pokemon {
   name: string;
   sprites: {
     front_default: string;
-    other: {
-      'official-artwork': {
+    front_shiny?: string | null;
+    back_default?: string | null;
+    back_shiny?: string | null;
+    front_female?: string | null;
+    front_shiny_female?: string | null;
+    other?: {
+      'official-artwork'?: {
         front_default: string;
       };
       showdown?: {
-        front_default: string;
+        front_default?: string;
+        front_shiny?: string;
       };
     };
   };

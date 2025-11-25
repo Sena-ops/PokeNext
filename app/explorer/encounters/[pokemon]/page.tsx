@@ -62,7 +62,7 @@ export default async function EncounterExplorerPage({ params }: EncounterExplore
       <div className="mb-8">
         <div className="flex items-center gap-4 mb-4">
           <img
-            src={pokemon.sprites.other['official-artwork'].front_default}
+            src={pokemon.sprites.other?.['official-artwork']?.front_default || pokemon.sprites.front_default}
             alt={pokemon.name}
             className="w-32 h-32"
           />

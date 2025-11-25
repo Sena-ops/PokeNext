@@ -57,7 +57,7 @@ export default async function FlavorPage({ params }: FlavorPageProps) {
       {/* Header */}
       <div className="flex items-center gap-4 mb-8">
         <img
-          src={pokemon.sprites.other['official-artwork'].front_default}
+          src={pokemon.sprites.other?.['official-artwork']?.front_default || pokemon.sprites.front_default}
           alt={pokemon.name}
           className="w-32 h-32"
         />

@@ -38,7 +38,7 @@ export function SuggestionCard({ suggestion, onAdd, index }: SuggestionCardProps
           <div className="flex items-start justify-between mb-2">
             <div className="flex items-center gap-2">
               <img
-                src={pokemon.sprites.other['official-artwork'].front_default}
+                src={pokemon.sprites.other?.['official-artwork']?.front_default || pokemon.sprites.front_default}
                 alt={pokemon.name}
                 className="w-16 h-16"
               />

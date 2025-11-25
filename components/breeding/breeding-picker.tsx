@@ -42,7 +42,7 @@ export function BreedingPicker({ parent, onSelectParent, onClear, label }: Breed
               className="flex items-center gap-4 p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg"
             >
               <img
-                src={parent.sprites.other['official-artwork'].front_default}
+                src={parent.sprites.other?.['official-artwork']?.front_default || parent.sprites.front_default}
                 alt={parent.name}
                 className="w-20 h-20"
               />

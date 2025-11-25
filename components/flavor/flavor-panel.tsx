@@ -29,7 +29,7 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
     ? flavorTexts.filter(f => f.version === selectedVersion)
     : flavorTexts.slice(0, 5);
   
-  // Get genus (e.g., &quot;Seed Pokémon&quot;)
+  // Get genus (e.g., "Seed Pokémon")
   const genus = species.genera.find(g => g.language.name === 'en')?.genus || '';
   
   // Get interesting facts
@@ -41,17 +41,17 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
   ].filter(Boolean);
   
   return (
-    <div className=&quot;space-y-6&quot;>
+    <div className="space-y-6">
       {/* Header Info */}
       <Card>
         <CardHeader>
-          <div className=&quot;flex items-center justify-between&quot;>
-            <div className=&quot;flex items-center gap-2&quot;>
-              <Sparkles className=&quot;w-6 h-6 text-purple-500&quot; />
-              <CardTitle className=&quot;text-2xl&quot;>Lore & Information</CardTitle>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-6 h-6 text-purple-500" />
+              <CardTitle className="text-2xl">Lore & Information</CardTitle>
             </div>
             {genus && (
-              <Badge variant=&quot;secondary&quot; className=&quot;text-sm&quot;>
+              <Badge variant="secondary" className="text-sm">
                 {genus}
               </Badge>
             )}
@@ -60,21 +60,21 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
         
         <CardContent>
           {facts.length > 0 && (
-            <div className=&quot;flex flex-wrap gap-2&quot;>
+            <div className="flex flex-wrap gap-2">
               {facts.map((fact, index) => (
-                <Badge key={index} className=&quot;bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200&quot;>
+                <Badge key={index} className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
                   ✨ {fact}
                 </Badge>
               ))}
             </div>
           )}
           
-          <div className=&quot;grid grid-cols-2 md:grid-cols-4 gap-4 mt-4&quot;>
-            <StatBox label=&quot;Capture Rate&quot; value={species.capture_rate.toString()} />
-            <StatBox label=&quot;Base Happiness&quot; value={species.base_happiness.toString()} />
-            <StatBox label=&quot;Growth Rate&quot; value={species.growth_rate.name.replace(/-/g, ' ')} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+            <StatBox label="Capture Rate" value={species.capture_rate.toString()} />
+            <StatBox label="Base Happiness" value={species.base_happiness.toString()} />
+            <StatBox label="Growth Rate" value={species.growth_rate.name.replace(/-/g, ' ')} />
             <StatBox 
-              label=&quot;Habitat&quot; 
+              label="Habitat" 
               value={species.habitat?.name.replace(/-/g, ' ') || 'Unknown'} 
             />
           </div>
@@ -84,16 +84,16 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
       {/* Flavor Texts */}
       <Card>
         <CardHeader>
-          <div className=&quot;flex items-center gap-2 mb-4&quot;>
-            <BookOpen className=&quot;w-6 h-6 text-blue-500&quot; />
-            <CardTitle className=&quot;text-2xl&quot;>Pokédex Entries</CardTitle>
+          <div className="flex items-center gap-2 mb-4">
+            <BookOpen className="w-6 h-6 text-blue-500" />
+            <CardTitle className="text-2xl">Pokédex Entries</CardTitle>
           </div>
           
           {/* Version Filter */}
-          <div className=&quot;flex flex-wrap gap-2&quot;>
+          <div className="flex flex-wrap gap-2">
             <Badge
               variant={selectedVersion === null ? 'default' : 'outline'}
-              className=&quot;cursor-pointer&quot;
+              className="cursor-pointer"
               onClick={() => setSelectedVersion(null)}
             >
               Recent
@@ -102,7 +102,7 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
               <Badge
                 key={version}
                 variant={selectedVersion === version ? 'default' : 'outline'}
-                className=&quot;cursor-pointer capitalize&quot;
+                className="cursor-pointer capitalize"
                 onClick={() => setSelectedVersion(version)}
               >
                 {version.replace(/-/g, ' ')}
@@ -112,21 +112,21 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
         </CardHeader>
         
         <CardContent>
-          <div className=&quot;space-y-4&quot;>
+          <div className="space-y-4">
             {displayedTexts.map((entry, index) => (
               <motion.div
                 key={`${entry.version}-${index}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className=&quot;p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg&quot;
+                className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg"
               >
-                <div className=&quot;flex items-start gap-3&quot;>
-                  <Badge variant=&quot;secondary&quot; className=&quot;mt-1 capitalize shrink-0&quot;>
+                <div className="flex items-start gap-3">
+                  <Badge variant="secondary" className="mt-1 capitalize shrink-0">
                     {entry.version.replace(/-/g, ' ')}
                   </Badge>
-                  <p className=&quot;text-sm text-gray-700 dark:text-gray-300 italic&quot;>
-                    &quot;{entry.text}&quot;
+                  <p className="text-sm text-gray-700 dark:text-gray-300 italic">
+                    &ldquo;{entry.text}&rdquo;
                   </p>
                 </div>
               </motion.div>
@@ -134,7 +134,7 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
           </div>
           
           {flavorTexts.length > displayedTexts.length && !selectedVersion && (
-            <p className=&quot;text-sm text-gray-500 dark:text-gray-400 mt-4 text-center&quot;>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 text-center">
               {flavorTexts.length - displayedTexts.length} more entries available. Select a version to filter.
             </p>
           )}
@@ -145,17 +145,17 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
       {species.form_descriptions.length > 0 && (
         <Card>
           <CardHeader>
-            <div className=&quot;flex items-center gap-2&quot;>
-              <Info className=&quot;w-6 h-6 text-green-500&quot; />
-              <CardTitle className=&quot;text-xl&quot;>Form Descriptions</CardTitle>
+            <div className="flex items-center gap-2">
+              <Info className="w-6 h-6 text-green-500" />
+              <CardTitle className="text-xl">Form Descriptions</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
-            <div className=&quot;space-y-3&quot;>
+            <div className="space-y-3">
               {species.form_descriptions
                 .filter(desc => desc.language.name === 'en')
                 .map((desc, index) => (
-                  <p key={index} className=&quot;text-sm text-gray-600 dark:text-gray-400&quot;>
+                  <p key={index} className="text-sm text-gray-600 dark:text-gray-400">
                     {desc.description}
                   </p>
                 ))}
@@ -169,9 +169,9 @@ export function FlavorPanel({ species }: FlavorPanelProps) {
 
 function StatBox({ label, value }: { label: string; value: string }) {
   return (
-    <div className=&quot;p-3 bg-gray-50 dark:bg-gray-800 rounded-lg&quot;>
-      <p className=&quot;text-xs text-gray-600 dark:text-gray-400 mb-1&quot;>{label}</p>
-      <p className=&quot;font-semibold capitalize&quot;>{value}</p>
+    <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+      <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{label}</p>
+      <p className="font-semibold capitalize">{value}</p>
     </div>
   );
 }

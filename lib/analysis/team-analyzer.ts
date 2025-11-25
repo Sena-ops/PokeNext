@@ -164,7 +164,7 @@ function calculateAverageStats(pokemon: TeamPokemon[]) {
 function calculateSynergyScore(
   coverage: Record<PokemonType, number>,
   weaknesses: Record<PokemonType, number>,
-  stats: any
+  stats: Record<string, number>
 ): number {
   let score = 50; // Base score
 
@@ -180,7 +180,7 @@ function calculateSynergyScore(
 
   // Stat balance (0-20 points)
   const statValues = Object.values(stats);
-  const avgStat = statValues.reduce((a: number, b: number) => a + b, 0) / statValues.length;
+  const avgStat = statValues.reduce((a, b) => a + b, 0) / statValues.length;
   const statScore = Math.min(20, avgStat / 5);
   score += statScore;
 
